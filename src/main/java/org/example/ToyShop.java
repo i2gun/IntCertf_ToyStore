@@ -4,6 +4,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 
 public class ToyShop {
 
@@ -12,11 +16,13 @@ public class ToyShop {
 
     ToyShop(String[] toyProperties) {
         toys = new Toys();
+        List<Toy> toyList = new ArrayList<>();
+        int toysCount = toyProperties.length;
         int id = 0;
         int rate = 0;
-        String name = "";
 
-        for (String item : toyProperties) {
+        for (int i = 0; i < toysCount; i++) {
+            String item = toyProperties[i];
             String[] toyProperty = item.split(" ");
             if (toyProperty.length < 3) {
                 System.out.println("Input data error: wrong number of parameters in string.");
@@ -34,9 +40,13 @@ public class ToyShop {
                 System.out.println("Input data error: wrong rate.");
                 return;
             };
-            name = toyProperty[2];
+            for (int j = 0; j < rate; j++) {
+                toyList.add(new Toy(id, rate, toyProperty[2]));
+            }
+        }
 
-            toys.addToys(id, rate, name);
+        for (Toy toy : toyList) {
+            toys.addToys(toy);
         }
     }
 
@@ -68,7 +78,6 @@ public class ToyShop {
             fileOutStream.write(b);
             fileOutStream.flush();
             fileOutStream.close();
-            System.out.println("File writing done.");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
