@@ -2,25 +2,33 @@ package org.example;
 
 public class Toy implements Comparable<Toy> {
 
-    int id;
-    String name;
-    int rate;
+    private int id;
+    private String name;
+    private int rate;
+    private int occurrence;
 
-    Toy(String toyId, String toyName, String dropRate) {
+    Toy(int toyId, int dropRate, String toyName) {
         this.name = toyName;
+        this.id = toyId;
+        this.rate = dropRate;
 
-        try {
-            this.id = Integer.parseInt(toyId);
-        } catch (NumberFormatException e) {
-            this.id = 0;
-        };
+        resetOccurrence();
+    }
 
-        try {
-            this.rate = Integer.parseInt(dropRate);
-        } catch (NumberFormatException e) {
-            this.rate = 0;
-        };
+    public int getRate() {
+        return rate;
+    }
 
+    public boolean hasOccurrence() {
+        return occurrence > 0;
+    }
+
+    public void decreaseOccurrence() {
+        occurrence--;
+    }
+
+    public void resetOccurrence() {
+        occurrence = rate;
     }
 
     @Override
@@ -30,6 +38,6 @@ public class Toy implements Comparable<Toy> {
 
     @Override
     public int compareTo(Toy o) {
-        return this.rate - o.rate;
+        return o.rate - this.rate;
     }
 }

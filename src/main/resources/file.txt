@@ -1,0 +1,10 @@
+id = 2 | name = Drone | rate = 4
+id = 2 | name = Drone | rate = 4
+id = 2 | name = Drone | rate = 4
+id = 2 | name = Drone | rate = 4
+id = 3 | name = Penguin | rate = 3
+id = 1 | name = Puzzle | rate = 3
+id = 1 | name = Puzzle | rate = 3
+id = 1 | name = Puzzle | rate = 3
+id = 3 | name = Penguin | rate = 3
+id = 3 | name = Penguin | rate = 3
